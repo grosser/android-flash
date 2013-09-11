@@ -7,7 +7,6 @@ import android.hardware.Camera;
 import android.hardware.Camera.Parameters;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -77,13 +76,5 @@ public class MainActivity extends Activity {
 
 	private boolean hasFlash(){
 		return getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH);
-	}
-
-	@Override
-	// TODO delete !?
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
 	}
 }
