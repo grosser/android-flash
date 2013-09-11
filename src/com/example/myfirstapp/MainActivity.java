@@ -2,6 +2,7 @@ package com.example.myfirstapp;
 
 import android.app.Activity;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.hardware.Camera;
 import android.hardware.Camera.Parameters;
 import android.os.Bundle;
@@ -12,16 +13,17 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 
 public class MainActivity extends Activity {
-
-	private boolean isLightOn = false;
+	private boolean isLightOn;
 	private Camera camera;
 	private Button button;
-	private View v;
+	private View background;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+
+		background = findViewById(R.id.backgroundView);
 
 		button = (Button) findViewById(R.id.buttonFlashlight);
 		button.setOnClickListener(new OnClickListener() {
@@ -34,6 +36,8 @@ public class MainActivity extends Activity {
 				}
 			}
 		});
+
+		turnLightOff();
 	}
 
 	@Override
@@ -47,7 +51,7 @@ public class MainActivity extends Activity {
 		Log.e("err", "Light off!");
 		isLightOn = false;
 
-		// TODO change color to black
+		background.setBackgroundColor(Color.BLACK);
 
 		if (camera != null) {
 			camera.stopPreview();
@@ -60,7 +64,7 @@ public class MainActivity extends Activity {
 		Log.e("err", "Light on!");
 		isLightOn = true;
 
-		// TODO change color to white
+		background.setBackgroundColor(Color.WHITE);
 
 		if (hasFlash()) {
 			camera = Camera.open();
@@ -74,7 +78,6 @@ public class MainActivity extends Activity {
 	private boolean hasFlash(){
 		return getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH);
 	}
-
 
 	@Override
 	// TODO delete !?
