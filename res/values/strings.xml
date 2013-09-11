@@ -3,6 +3,6 @@
 
     <string name="app_name">My First App</string>
     <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="light">Light!</string>
 
 </resources>
